@@ -1,0 +1,219 @@
+Manager:
+    Ana:
+    Game:
+    EndWindow:
+<Ana>:
+    name: "Ana"
+    canvas.before:
+        Color:
+            rgba: (150/255,150/255,90/255,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "backgroundhappy.png"
+    Image:
+        source: "images/pattern.png"
+        size: (self.parent.width,self.parent.height)
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        opacity:0.15
+        allow_stretch: True
+        keep_ratio: False
+
+
+
+    Label:
+        id: head
+        text: "PISTI"
+        pos_hint: {'center_x': .5, 'center_y':.7}
+        font_name: "z-font.otf"
+        font_size: "120sp"
+        halign: 'center'
+        valign: 'middle'
+        color: 1, 1, 0, 1
+    Button:
+        id: menu
+        text: "Basla"
+        pos_hint: {'center_x': .5, 'center_y':.4}
+        font_name: "z-font.otf"
+        font_size: "30sp"
+        background_color: 0,0,1,1
+        color: 1, 1, 0, 1
+        size_hint: .15, .1
+        on_release:
+            root.clean_vals()
+            root.strt.play()
+            app.root.current = "Game"
+
+<Game>:
+    name: "Game"
+    canvas.before:
+        Color:
+            rgba: (150/255,150/255,90/255,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "backgroundanime.png"
+    Button:
+        id: res
+        size_hint: .07,.07
+        pos_hint: {'center_x': .2, 'center_y':.74}
+        text: "Restart"
+        font_name: "z-font.otf"
+        font_size: "13sp"
+        background_color: 0,0,1,1
+        color: 1, 1, 0, 1
+        disabled: False
+        on_release:
+            self.disabled = True
+            root.distributeTheCards(.5)
+    Button:
+        id: myFirstSlot
+        text:"1"
+        size_hint: .14,.35
+        pos_hint: {'center_x': .27, 'center_y':.24}
+        background_color: 210/255, 210/255, 210/255, 0.5
+        on_release:
+            root.ClickedFirstSlot()
+        Image:
+            id: FirstImage
+            source: root.Slot1Source
+            size: (self.parent.width,self.parent.height)
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            allow_stretch: True
+            keep_ratio: False
+    Button:
+        id: mySecondSlot
+        text:"2"
+        size_hint: .14,.35
+        pos_hint: {'center_x': .42, 'center_y':.24}
+        background_color: 210/255, 210/255, 210/255, 0.5
+        on_release:
+            root.ClickedSecondSlot()
+        Image:
+            id: SecondImage
+            source: root.Slot2Source
+            size: (self.parent.width,self.parent.height)
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            allow_stretch: True
+            keep_ratio: False
+    Button:
+        id: myThirdSlot
+        text:"3"
+        size_hint: .14,.35
+        pos_hint: {'center_x': .57, 'center_y':.24}
+        background_color: 210/255, 210/255, 210/255, 0.5
+        on_release:
+            root.ClickedThirdSlot()
+        Image:
+            id: ThirdImage
+            source: root.Slot3Source
+            size: (self.parent.width,self.parent.height)
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            allow_stretch: True
+            keep_ratio: False
+    Button:
+        id: myFourthSlot
+        text:"4"
+        size_hint: .14,.35
+        pos_hint: {'center_x': .72, 'center_y':.24}
+        background_color: 210/255, 210/255, 210/255, 0.5
+        on_release:
+            root.ClickedFourthSlot()
+        Image:
+            id: FourthImage
+            source: root.Slot4Source
+            size: (self.parent.width,self.parent.height)
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            allow_stretch: True
+            keep_ratio: False
+
+    Button:
+        id: Middle
+        text: "Orta"
+        size_hint: .14,.35
+        pos_hint: {'center_x': .85, 'center_y':.7}
+        background_color: 210/255, 210/255, 210/255, 0.5
+        Image:
+            id: MidImage
+            source: root.MidSource
+            size: (self.parent.width,self.parent.height)
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            allow_stretch: True
+            keep_ratio: False
+    Label:
+        text: root.Line
+        pos_hint: {'center_x': .85, 'center_y':.92}
+        font_name: "z-font.otf"
+        font_size: "20sp"
+        color: 1, 1, 0, 1
+
+<EndWindow>:
+    name: "EndWindow"
+
+    Image:
+        id: rec
+        source: "images/normaldark.png"
+        size: (self.parent.width,self.parent.height)
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        allow_stretch: True
+        keep_ratio: False
+
+
+    Label:
+        id: head
+        text: "Oyun Bitti"
+        pos_hint: {'center_x': .5, 'center_y':.7}
+        font_name: "z-font.otf"
+        font_size: "120sp"
+        halign: 'center'
+        valign: 'middle'
+        color: 1, 1, 0, 1
+
+    Label:
+        id: myPoints
+        text: ""
+        pos_hint: {'center_x': .12, 'center_y':.5}
+        font_name: "z-font.otf"
+        font_size: "40sp"
+        halign: 'center'
+        valign: 'middle'
+        color: 1, 1, 0, 1
+    Label:
+        id: herPoints
+        text: ""
+        pos_hint: {'center_x': .83, 'center_y':.5}
+        font_name: "z-font.otf"
+        font_size: "40sp"
+        halign: 'center'
+        valign: 'middle'
+        color: 1, 1, 0, 1
+    Label:
+        id: herWords
+        text: ""
+        pos_hint: {'center_x': .5, 'center_y':.56}
+        font_name: "z-font.otf"
+        font_size: "20sp"
+        halign: 'center'
+        valign: 'middle'
+        color: 1, 1, 0, 1
+
+    Button:
+        id: menu
+        text: "ilerle"
+        pos_hint: {'center_x': .5, 'center_y':.4}
+        font_name: "z-font.otf"
+        font_size: "30sp"
+        background_color: 0,0,1,1
+        color: 1, 1, 0, 1
+        size_hint: .15, .1
+        on_release:
+            if root.fsval == True: root.displayPoints(); root.fsval = False
+            else: root.clean(); app.root.current = "Ana"
+
